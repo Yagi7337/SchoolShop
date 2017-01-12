@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.school.entity.Child;
-import com.school.service.SchoolShopService;	
+import com.school.service.SchoolShopService;
 
 @RestController	
 @RequestMapping("/school")
@@ -46,5 +46,17 @@ public class SchoolController {
 	public String deleteById(@PathVariable("id") int id) {
 		schoolShopService.deleteById(id);
 		return "Child " + id + " was delete";
+	}
+	
+	/**
+	 * Update information about child in DB
+	 * 
+	 * @param child
+	 * @return
+	 */
+	@RequestMapping(value = "/update", method = RequestMethod.PUT)
+	public String updateBike(@RequestBody Child child) {
+		this.schoolShopService.updateChild(child);
+		return "Child was update";
 	}
 }
