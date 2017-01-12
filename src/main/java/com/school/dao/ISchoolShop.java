@@ -4,5 +4,6 @@ import com.school.entity.Child;
 
 public interface ISchoolShop {
 	public Child surchByID(int id);
-//	void updateBike(Bike bike);
+//	public void updateChild(Child children);
+	public void createChild(Child children);
 }

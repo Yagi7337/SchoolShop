@@ -15,7 +15,11 @@ public class SchoolShopService {
 		return iSchoolShop.surchByID(id);
 	}
 
-//	public void updateBike(Child children) {
-//		iSchoolShop.updateBike(children);
+//	public void updateChild(Child children) {
+//		iSchoolShop.updateChild(children);
 //	}
+	
+	public void createChild(Child children) {
+		iSchoolShop.createChild(children);
+	}
 }

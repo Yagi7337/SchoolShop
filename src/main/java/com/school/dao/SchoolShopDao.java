@@ -21,7 +21,7 @@ import com.school.entity.Child;
  * @author school
  * 
  */
-@Repository("BikeDao")
+@Repository
 public class SchoolShopDao implements ISchoolShop {
 
 	/**
@@ -58,13 +58,21 @@ public class SchoolShopDao implements ISchoolShop {
 		return child;
 	}
 
-//	public void updateBike(Child children) {
-//		final String SQL = "UPDATE bike SET name=?, mark=? WHERE id=?";
+//	public void updateChild(Child children) {
+//		final String SQL = "UPDATE child SET name=?, surname=? WHERE id=?";
 //		final int id = children.getId();
 //		final String name = children.getName();
 //		final String surname = children.getSurname();
 //
 //		jdbc.update(SQL, new Object[] { id, name, surname });
 //	}
+	
+	public void createChild(Child children) {
+		final String SQL = "INSERT INTO child (name, surname) values (?, ?) ";
+		final String name = children.getName();
+		final String surname = children.getSurname();
+
+		jdbc.update(SQL, new Object[] { name, surname });
+	}
 	
 }
