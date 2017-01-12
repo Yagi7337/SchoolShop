@@ -31,7 +31,6 @@ public class SchoolShopDao implements ISchoolShop {
 	private JdbcTemplate jdbc;
 
 	public static class workingWithRowMap implements RowMapper<Child> {
-
 		/**
 		 * copy data from DB to child
 		 */
@@ -40,10 +39,8 @@ public class SchoolShopDao implements ISchoolShop {
 			child.setId(rs.getInt(1));
 			child.setName(rs.getString(2));
 			child.setSurname(rs.getString(3));
-
 			return child;
 		}
-
 	}
 
 	/**
@@ -57,15 +54,6 @@ public class SchoolShopDao implements ISchoolShop {
 		Child child = jdbc.queryForObject(SQL, new workingWithRowMap(), id);
 		return child;
 	}
-
-//	public void updateChild(Child children) {
-//		final String SQL = "UPDATE child SET name=?, surname=? WHERE id=?";
-//		final int id = children.getId();
-//		final String name = children.getName();
-//		final String surname = children.getSurname();
-//
-//		jdbc.update(SQL, new Object[] { id, name, surname });
-//	}
 	
 	public void createChild(Child children) {
 		final String SQL = "INSERT INTO child (name, surname) values (?, ?) ";
@@ -73,6 +61,16 @@ public class SchoolShopDao implements ISchoolShop {
 		final String surname = children.getSurname();
 
 		jdbc.update(SQL, new Object[] { name, surname });
+	}
+	
+	/**
+	 * Delete child by id
+	 * 
+	 * @param id
+	 */
+	public void deleteById(int id) {
+		final String SQL = "DELETE FROM child WHERE id=?";
+		jdbc.update(SQL, id);
 	}
 	
 }
