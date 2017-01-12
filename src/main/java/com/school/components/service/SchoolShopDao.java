@@ -1,4 +1,4 @@
-package com.school.dao;
+package com.school.components.service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,7 +8,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import com.school.entity.Child;
+import com.school.components.entity.Child;
+import com.school.components.interface_i.ISchoolShop;
 
 /**
  * Class for working with db MySQL
