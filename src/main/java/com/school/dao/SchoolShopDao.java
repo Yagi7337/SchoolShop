@@ -8,11 +8,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.jdbc.core.JdbcTemplate;
-//import org.springframework.jdbc.core.RowMapper;
-//import org.springframework.stereotype.Repository;
-
 import com.school.entity.Child;
 
 /**
@@ -55,10 +50,10 @@ public class SchoolShopDao implements ISchoolShop {
 		return child;
 	}
 	
-	public void createChild(Child children) {
+	public void createChild(Child child) {
 		final String SQL = "INSERT INTO child (name, surname) values (?, ?) ";
-		final String name = children.getName();
-		final String surname = children.getSurname();
+		final String name = child.getName();
+		final String surname = child.getSurname();
 
 		jdbc.update(SQL, new Object[] { name, surname });
 	}
@@ -71,6 +66,21 @@ public class SchoolShopDao implements ISchoolShop {
 	public void deleteById(int id) {
 		final String SQL = "DELETE FROM child WHERE id=?";
 		jdbc.update(SQL, id);
+	}
+	
+	/**
+	 * Update information about child by id
+	 * 
+	 * @param child
+	 */
+	
+	public void updateChild(Child child){
+		final String SQL = "UPDATE child SET name=?, surname=? WHERE id=?";
+		final int id = child.getId();
+		final String name = child.getName();
+		final String surname = child.getSurname();
+
+		jdbc.update(SQL, new Object[] { name, surname, id });
 	}
 	
 }
