@@ -8,9 +8,8 @@ import com.school.entity.Child;
 
 @Service
 public class SchoolShopService {
-	
 	@Autowired
-	private ISchoolShop iSchoolShop;
+	public ISchoolShop iSchoolShop;
 
 	public Child surchById(int id) {
 		return iSchoolShop.surchByID(id);

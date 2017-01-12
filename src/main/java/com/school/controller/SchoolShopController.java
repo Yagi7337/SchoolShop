@@ -12,7 +12,7 @@ import com.school.entity.Child;
 import com.school.service.SchoolShopService;
 
 @RestController
-@RequestMapping("/zvi")
+@RequestMapping("/view")
 public class SchoolShopController {
 	@Autowired
 	private SchoolShopService schoolShopService;

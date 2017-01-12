@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.jdbc.core.JdbcTemplate;
@@ -20,6 +21,7 @@ import com.school.entity.Child;
  * @author school
  * 
  */
+@Repository("BikeDao")
 public class SchoolShopDao implements ISchoolShop {
 
 	/**
@@ -31,38 +33,38 @@ public class SchoolShopDao implements ISchoolShop {
 	public static class workingWithRowMap implements RowMapper<Child> {
 
 		/**
-		 * copy data from DB to student
+		 * copy data from DB to child
 		 */
 		public Child mapRow(ResultSet rs, int rowNum) throws SQLException {
-			Child children = new Child();
-			children.setId(rs.getInt(1));
-			children.setName(rs.getString(2));
-			children.setSurname(rs.getString(3));
+			Child child = new Child();
+			child.setId(rs.getInt(1));
+			child.setName(rs.getString(2));
+			child.setSurname(rs.getString(3));
 
-			return children;
+			return child;
 		}
 
 	}
 
 	/**
-	 * Looking information about bike by id
+	 * Looking information about child by id
 	 * 
 	 * @param id
-	 * @return bike
+	 * @return child
 	 */
 	public Child surchByID(int id) {
-		final String SQL = "SELECT * FROM bike WHERE id=?";
-		Child children = jdbc.queryForObject(SQL, new workingWithRowMap(), id);
-		return children;
+		final String SQL = "SELECT * FROM child WHERE id=?";
+		Child child = jdbc.queryForObject(SQL, new workingWithRowMap(), id);
+		return child;
 	}
 
-	public void updateBike(Child children) {
-		final String SQL = "UPDATE bike SET name=?, mark=? WHERE id=?";
-		final int id = children.getId();
-		final String name = children.getName();
-		final String surname = children.getSurname();
-
-		jdbc.update(SQL, new Object[] { id, name, surname });
-	}
+//	public void updateBike(Child children) {
+//		final String SQL = "UPDATE bike SET name=?, mark=? WHERE id=?";
+//		final int id = children.getId();
+//		final String name = children.getName();
+//		final String surname = children.getSurname();
+//
+//		jdbc.update(SQL, new Object[] { id, name, surname });
+//	}
 	
 }
