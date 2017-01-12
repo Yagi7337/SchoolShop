@@ -1,18 +1,19 @@
-package com.school.entity;
+package com.school.components.entity;
 
 public class Child {
 	private int id;
 	private String name;
 	private String surname;
-	
-	public Child() {}
-	
+
+	public Child() {
+	}
+
 	public Child(int id, String name, String surname) {
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
-	}	
-	
+	}
+
 	public int getId() {
 		return id;
 	}

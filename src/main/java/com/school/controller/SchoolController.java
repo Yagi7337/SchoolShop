@@ -1,19 +1,16 @@
 package com.school.controller;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.school.entity.Child;
+import com.school.components.entity.Child;
 import com.school.service.SchoolShopService;
 
-@RestController	
+@RestController
 @RequestMapping("/school")
 public class SchoolController {
 	@Autowired
@@ -25,7 +22,7 @@ public class SchoolController {
 	 * @param id
 	 * @return
 	 */
-	
+
 	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
 	public Child surchById(@PathVariable("id") int id) {
 		return schoolShopService.surchById(id);
@@ -36,7 +33,7 @@ public class SchoolController {
 		schoolShopService.createChild(children);
 		return "Child was created";
 	}
-	
+
 	/**
 	 * Delete child by id
 	 * 
@@ -47,7 +44,7 @@ public class SchoolController {
 		schoolShopService.deleteById(id);
 		return "Child " + id + " was delete";
 	}
-	
+
 	/**
 	 * Update information about child in DB
 	 * 
