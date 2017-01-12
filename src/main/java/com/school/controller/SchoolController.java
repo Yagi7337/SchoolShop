@@ -26,47 +26,25 @@ public class SchoolController {
 	 * @return
 	 */
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
 	public Child surchById(@PathVariable("id") int id) {
 		return schoolShopService.surchById(id);
 	}
-
-//	/**
-//	 * Update information about bike in DB
-//	 * 
-//	 * @param child
-//	 * @return
-//	 */
-//	@RequestMapping(value = "/update", method = RequestMethod.PUT)
-//	public String updateChild(@RequestBody Child children) {
-//		this.schoolShopService.updateChild(children);
-//		return "Child was update";
-//	}
-
-//	/**
-//	 * Information about all bikes in DB
-//	 * 
-//	 * @return
-//	 */
-//	@RequestMapping(value = "/information/{page}", method = RequestMethod.GET)
-//	public Collection<Bike> informationAboutBikes(@PathVariable("page") int page) {
-//		return bikeShopService.informationAboutBikes(page);
-//	}
-//
-//	/**
-//	 * Remove bike by id
-//	 * 
-//	 * @return
-//	 */
-//	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-//	public String removeBike(@PathVariable("id") int id) {
-//		bikeShopService.removeBike(id);
-//		return "Bike " + id + " was delete";
-//	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public String createChild(@RequestBody Child children) {
 		schoolShopService.createChild(children);
 		return "Child was created";
+	}
+	
+	/**
+	 * Delete child by id
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+	public String deleteById(@PathVariable("id") int id) {
+		schoolShopService.deleteById(id);
+		return "Child " + id + " was delete";
 	}
 }
