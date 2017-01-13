@@ -7,20 +7,20 @@ import com.school.components.entity.Child;
 import com.school.components.interface_i.IChild;
 
 @Service
-public class SchoolShopService {
+public class ChildService {
 	@Autowired
 	public IChild iSchoolShop;
 
-	public Child surchById(int id) {
-		return iSchoolShop.surchByID(id);
+	public Child searchByIdChild(int id) {
+		return iSchoolShop.searchByIdChild(id);
 	}
 
-	public void createChild(Child child) {
-		iSchoolShop.createChild(child);
+	public void addChild(Child child) {
+		iSchoolShop.addChild(child);
 	}
 
-	public void deleteById(int id) {
-		iSchoolShop.deleteById(id);
+	public void deleteByIdChild(int id) {
+		iSchoolShop.deleteByIdChild(id);
 	}
 
 	public void updateChild(Child child) {
