@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.school.components.entity.Child;
-import com.school.service.SchoolShopService;
+import com.school.service.ChildService;
 
 @RestController
-@RequestMapping("/school")
-public class SchoolController {
+@RequestMapping("/school/child")
+public class ChildController {
 	@Autowired
-	private SchoolShopService schoolShopService;
+	private ChildService childService;
 
 	/**
 	 * Get child by id from DB
@@ -25,12 +25,12 @@ public class SchoolController {
 
 	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
 	public Child surchById(@PathVariable("id") int id) {
-		return schoolShopService.surchById(id);
+		return childService.searchByIdChild(id);
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public String createChild(@RequestBody Child children) {
-		schoolShopService.createChild(children);
+		childService.addChild(children);
 		return "Child was created";
 	}
 
@@ -41,7 +41,7 @@ public class SchoolController {
 	 */
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	public String deleteById(@PathVariable("id") int id) {
-		schoolShopService.deleteById(id);
+		childService.deleteByIdChild(id);
 		return "Child " + id + " was delete";
 	}
 
@@ -52,8 +52,8 @@ public class SchoolController {
 	 * @return
 	 */
 	@RequestMapping(value = "/update", method = RequestMethod.PUT)
-	public String updateBike(@RequestBody Child child) {
-		this.schoolShopService.updateChild(child);
+	public String updateChild(@RequestBody Child child) {
+		this.childService.updateChild(child);
 		return "Child was update";
 	}
 }
