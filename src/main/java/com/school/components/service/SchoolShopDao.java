@@ -9,7 +9,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.school.components.entity.Child;
-import com.school.components.interface_i.IChild;
+import com.school.components.interface_i.ISchoolShop;
 
 /**
  * Class for working with db MySQL
@@ -18,7 +18,7 @@ import com.school.components.interface_i.IChild;
  * 
  */
 @Repository
-public class SchoolShopDao implements IChild {
+public class SchoolShopDao implements ISchoolShop {
 
 	/**
 	 * variable to work with the base
